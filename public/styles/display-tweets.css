@@ -8,6 +8,10 @@
   margin-top: 10px;
 }
 
+/* .display-tweets:hover .user .uid {
+  visibility: visible;
+} */
+
 .user {
   display: flex;
   flex-direction: row;
@@ -17,7 +21,8 @@
 }
 
 .uid {
-  color: transparent;
+  color: #4057a162;
+  visibility: hidden;
 }
 
 .tweet-content {
