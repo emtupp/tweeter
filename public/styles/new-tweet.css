@@ -1,9 +1,3 @@
-.container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .new-tweet {
   width: 100%;
 }
@@ -11,6 +5,8 @@
 .tweet-form {
   display: flex;
   flex-direction: column;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .tweet-text {
