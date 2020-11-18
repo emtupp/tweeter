@@ -20,9 +20,18 @@
   padding-bottom: 0px;
 }
 
+
 .uid {
-  color: #4057a162;
-  visibility: hidden;
+  color: transparent;
+}
+
+.avatar-and-name {
+  display: flex;
+  align-items: center;
+}
+
+.avatar {
+  padding: 5px;
 }
 
 .tweet-content {
