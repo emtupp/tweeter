@@ -30,11 +30,20 @@ const data = [
 ]
 
 const createTweetElement = function(tweet) {
-let $tweet = $(`<img class="avatar" src=${tweet.user.avatars} style="width:50px;height:50px;">
-                <div class="username">${tweet.user.name}</div>
-                <div class="uid">${tweet.user.handle}</div>
-                <p class="tweet-content">${tweet.content.text}</p>
-                <div class="date">${tweet.created_at}</div>`); /* Your code for creating the tweet element */
+let $tweet = $(`<article class="tweet" id="tweet">
+                  <div class="user">
+                    <div class="avatar-and-name">
+                      <img class="avatar" src=${tweet.user.avatars} style="width:50px;height:50px;">
+                      <div class="username">${tweet.user.name}</div>
+                    </div>
+                    <div class="uid">${tweet.user.handle}</div>
+                  </div>
+                  <p class="tweet-content">${tweet.content.text}</p>
+                  <div class="date-and-info">
+                    <div class="date">${tweet.created_at}</div>
+                      <div class="icons"><i class="material-icons icon-blue">flag</i><i class="material-icons icon-blue">repeat</i><i class="material-icons icon-blue">favorite</i></div>
+                  </div>
+                </article>`); /* Your code for creating the tweet element */
 // ...
 
 return $tweet;
