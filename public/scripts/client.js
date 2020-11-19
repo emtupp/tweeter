@@ -18,17 +18,28 @@ let $tweet = $(`<article class="tweet" id="tweet">
 };
 
 const renderTweets = function(tweets) {
-  for (let tweet of tweets) {
-    const $tweet = createTweetElement(tweet);
-    $('#display-tweets').append($tweet); 
+  if (Array.isArray(tweets)) {
+    for (let tweet of tweets) {
+      const $tweet = createTweetElement(tweet);
+      $('#display-tweets').append($tweet);
+    }
+  } else {
+    const $tweet = createTweetElement(tweets);
+    $('#display-tweets').append($tweet);
   }
 };
 
+// const refreshPage = (tweets, creationMethod) => {
+//   $('display-tweets').empty()
+//   for (const post of Object.values(posts)) {
+//     const tweet = creationMethod(post)
+//     $('display-tweets').append(newArticle)
+//   }
+// }
+
 $(document).ready(function() {
+  const loadTweet = data => data.pop();
   $.ajax('/tweets', { method: 'GET' })
-    .then(function loadTweets(data) {
-      return data
-    })
     .then(renderTweets);
   $('form').on("submit", function(event) {
     event.preventDefault();
@@ -44,9 +55,7 @@ $(document).ready(function() {
         data: $(this).serialize()
       })
       .then(() => $.ajax('/tweets', { method: 'GET' }))
-      .then(function loadTweets(data) {
-        return data
-      })
+      .then(loadTweet)
       .then(renderTweets)
       .then(() => {
         const $form = $('form');
