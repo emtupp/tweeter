@@ -31,7 +31,7 @@ $(document).ready(function() {
     $.ajax({
       url: "/tweets",
       method: "POST",
-      data: $('form').serialize()
+      data: $(this).serialize()
     })
     .then(() => $.ajax('/tweets', { method: 'GET' }))
     .then(function loadTweets(data) {
