@@ -25,13 +25,18 @@ const renderTweets = function(tweets) {
 };
 
 $(document).ready(function() {
+  $.ajax('/tweets', { method: 'GET' })
+    .then(function loadTweets(data) {
+      return data
+    })
+    .then(renderTweets);
   $('form').on("submit", function(event) {
     event.preventDefault();
     const $tweetTxt = $('#tweet-text').val().length
     if ($tweetTxt > 140) {
       alert("Error\nMaximum wordcount exceeded")
     } else if ($tweetTxt === 0) {
-      alert('message')
+      alert("Error\nForm can't be empty")
     } else {
       $.ajax({
         url: "/tweets",
