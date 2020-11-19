@@ -1,16 +1,3 @@
-// const preventAction = (event, action) => {
-//   event.preventDefault()
-
-//   $
-//     .ajax({
-//       url: "/tweets",
-//       method: "POST",
-//       data: $('form').serialize()
-//     })
-//     .then(res => action(res))
-//     .catch(err => console.log(err))
-// }
-
 const createTweetElement = function(tweet) {
 let $tweet = $(`<article class="tweet" id="tweet">
                   <div class="user">
@@ -47,11 +34,11 @@ $(document).ready(function() {
       data: $('form').serialize()
     })
     .then(() => $.ajax('/tweets', { method: 'GET' }))
-    .then(function (data) {
+    .then(function loadTweets(data) {
+      console.log(data)
       return data;
     })
-    .then(renderTweets(data))
+    .then(renderTweets)
     .catch(err => console.log(err))
   });
-  // renderTweets(db);
 });
