@@ -19,7 +19,7 @@
   font-weight: bold;
 }
 
-.display-tweets:hover .user .uid {
+.tweet:hover .user .uid {
   visibility: visible;
 }
 

@@ -26,19 +26,28 @@ const renderTweets = function(tweets) {
 
 $(document).ready(function() {
   $('form').on("submit", function(event) {
-    console.log('form submitted, preventing page change')
     event.preventDefault();
-    $.ajax({
-      url: "/tweets",
-      method: "POST",
-      data: $(this).serialize()
-    })
-    .then(() => $.ajax('/tweets', { method: 'GET' }))
-    .then(function loadTweets(data) {
-      console.log(data)
-      return data;
-    })
-    .then(renderTweets)
-    .catch(err => console.log(err))
+    const $tweetTxt = $('#tweet-text').val().length
+    if ($tweetTxt > 140) {
+      alert("Error\nMaximum wordcount exceeded")
+    } else if ($tweetTxt === 0) {
+      alert('message')
+    } else {
+      $.ajax({
+        url: "/tweets",
+        method: "POST",
+        data: $(this).serialize()
+      })
+      .then(() => $.ajax('/tweets', { method: 'GET' }))
+      .then(function loadTweets(data) {
+        return data
+      })
+      .then(renderTweets)
+      .then(() => {
+        const $form = $('form');
+        $form.trigger('reset');
+      })
+      .catch(err => console.log(err))
+    }
   });
 });
