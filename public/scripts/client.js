@@ -1,4 +1,4 @@
-const data = [
+const db = [
   {
     "user": {
       "name": "Newton",
@@ -74,8 +74,7 @@ $(document).ready(function() {
       method: "POST",
       data: $('form').serialize()
     })
-    .then(res => action(res))
-    .catch(err => console.log(err))
+    console.log($('form').serialize())
   });
-  renderTweets(data);
+  renderTweets(db);
 });
