@@ -23,8 +23,24 @@ const data = [
   }
 ]
 
+
+
+
+const preventAction = (event, action) => {
+  event.preventDefault()
+
+  $
+    .ajax({
+      url: "/tweets",
+      method: "POST",
+      data: $('form').serialize()
+    })
+    .then(res => action(res))
+    .catch(err => console.log(err))
+}
+
 const createTweetElement = function(tweet) {
-let $tweet = $(`<article class="tweet" id="${tweet.user.handle}">
+let $tweet = $(`<article class="tweet" id="tweet">
                   <div class="user">
                     <div class="avatar-and-name">
                       <img class="avatar" src=${tweet.user.avatars} style="width:50px;height:50px;">
@@ -39,7 +55,7 @@ let $tweet = $(`<article class="tweet" id="${tweet.user.handle}">
                   </div>
                 </article>`
                 );
-return $tweet;
+  return $tweet;
 };
 
 const renderTweets = function(tweets) {
@@ -50,5 +66,16 @@ const renderTweets = function(tweets) {
 };
 
 $(document).ready(function() {
+  $('form').on("submit", function(event) {
+    event.preventDefault();
+    $
+    .ajax({
+      url: "/tweets",
+      method: "POST",
+      data: $('form').serialize()
+    })
+    .then(res => action(res))
+    .catch(err => console.log(err))
+  });
   renderTweets(data);
 });
