@@ -1,3 +1,9 @@
+const escape =  function(str) {
+  let div = document.createElement('div');
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
+}
+
 const createTweetElement = function(tweet) {
 let $tweet = $(`<article class="tweet" id="tweet">
                   <div class="user">
@@ -7,7 +13,7 @@ let $tweet = $(`<article class="tweet" id="tweet">
                     </div>
                     <div class="uid">${tweet.user.handle}</div>
                   </div>
-                  <p class="tweet-content">${tweet.content.text}</p>
+                  <p class="tweet-content">${escape(tweet.content.text)}</p>
                   <div class="date-and-info">
                     <div class="date">${tweet.created_at}</div>
                       <div class="icons"><i class="material-icons icon-blue">flag</i><i class="material-icons icon-blue">repeat</i><i class="material-icons icon-blue">favorite</i></div>
@@ -16,6 +22,7 @@ let $tweet = $(`<article class="tweet" id="tweet">
                 );
   return $tweet;
 };
+
 
 const renderTweets = function(tweets) {
   if (Array.isArray(tweets)) {
@@ -29,26 +36,22 @@ const renderTweets = function(tweets) {
   }
 };
 
-// const refreshPage = (tweets, creationMethod) => {
-//   $('display-tweets').empty()
-//   for (const post of Object.values(posts)) {
-//     const tweet = creationMethod(post)
-//     $('display-tweets').append(newArticle)
-//   }
-// }
-
 $(document).ready(function() {
+
   const loadTweet = data => data.pop();
   $.ajax('/tweets', { method: 'GET' })
     .then(renderTweets);
+
   $('form').on("submit", function(event) {
     event.preventDefault();
+
     const $tweetTxt = $('#tweet-text').val().length
     if ($tweetTxt > 140) {
       alert("Error\nMaximum wordcount exceeded")
     } else if ($tweetTxt === 0) {
       alert("Error\nForm can't be empty")
     } else {
+
       $.ajax({
         url: "/tweets",
         method: "POST",
@@ -61,6 +64,7 @@ $(document).ready(function() {
         const $form = $('form');
         $form.trigger('reset');
       })
+
       .catch(err => console.log(err))
     }
   });
