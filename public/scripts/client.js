@@ -67,9 +67,11 @@ $(document).ready(function() {
     // Validating if tweets have a correct wordcount
     const $tweetTxt = $('#tweet-text').val().length
     if ($tweetTxt > 140) {
-      alert("Error\nMaximum wordcount exceeded") // change errors
+      $('.error').text("Error: Maximum wordcount exceeded");
+      setTimeout(function(){($('.error').text(""))}, 3000);
     } else if ($tweetTxt === 0) {
-      alert("Error\nForm can't be empty")
+      $('.error').text("Error: Form cannot be empty");
+      setTimeout(function(){($('.error').text(""))}, 3000);
     } else {
 
       // 1: prevents page from loading,
