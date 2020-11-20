@@ -3,7 +3,7 @@
   justify-content: space-evenly;
   margin: 50px;
 }
-@media all and (max-width:1050px) {
+@media all and (max-width:1024px) {
   .browser-view {
     display: flex;
     flex-direction: column;

@@ -13,8 +13,17 @@
   margin-top: 170px;
 }
 
+#profile-pic {
+  padding-top: 25px;
+}
 
-@media all and (max-width:1050px){
+#full-name {
+  font-weight: normal;
+  margin-top: 0px;
+}
+
+
+@media all and (max-width:1024px){
   .header {
     background-image: url("https://www.transparenttextures.com/patterns/inspiration-geometry.png");
     background-color: #124238;
