@@ -4,6 +4,11 @@ const escape =  function(str) {
   return div.innerHTML;
 }
 
+const dateAdjust = function(time) {
+  const dateNow = new Date(time *1000);
+  return dateNow;
+}
+
 const createTweetElement = function(tweet) {
 let $tweet = $(`<article class="tweet" id="tweet">
                   <div class="user">
@@ -15,7 +20,7 @@ let $tweet = $(`<article class="tweet" id="tweet">
                   </div>
                   <p class="tweet-content">${escape(tweet.content.text)}</p>
                   <div class="date-and-info">
-                    <div class="date">${tweet.created_at}</div>
+                    <div class="date">${dateAdjust(tweet.created_at)}</div>
                     <div class="icons"><i class="material-icons icon-blue">flag</i><i class="material-icons icon-blue">repeat</i><i class="material-icons icon-blue">favorite</i></div>
                   </div>
                 </article>`
