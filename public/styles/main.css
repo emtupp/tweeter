@@ -4,3 +4,10 @@
   align-items: center;
   justify-content: center;
 }
+
+
+@media all and (min-width:1023px) {
+  .container {
+    margin-right: 0px;
+  }
+}

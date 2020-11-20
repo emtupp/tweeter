@@ -16,7 +16,7 @@ let $tweet = $(`<article class="tweet" id="tweet">
                   <p class="tweet-content">${escape(tweet.content.text)}</p>
                   <div class="date-and-info">
                     <div class="date">${tweet.created_at}</div>
-                      <div class="icons"><i class="material-icons icon-blue">flag</i><i class="material-icons icon-blue">repeat</i><i class="material-icons icon-blue">favorite</i></div>
+                    <div class="icons"><i class="material-icons icon-blue">flag</i><i class="material-icons icon-blue">repeat</i><i class="material-icons icon-blue">favorite</i></div>
                   </div>
                 </article>`
                 );
@@ -36,11 +36,17 @@ const renderTweets = function(tweets) {
   }
 };
 
+const resetCounter = function() {
+  let counter = 140;
+  $(".counter").text(counter);
+}
+
 $(document).ready(function() {
 
   const loadTweet = data => data.pop();
   $.ajax('/tweets', { method: 'GET' })
-    .then(renderTweets);
+    .then(renderTweets)
+    .catch(err => console.log(err))
 
   $('form').on("submit", function(event) {
     event.preventDefault();
@@ -63,6 +69,7 @@ $(document).ready(function() {
       .then(() => {
         const $form = $('form');
         $form.trigger('reset');
+        resetCounter()
       })
 
       .catch(err => console.log(err))
