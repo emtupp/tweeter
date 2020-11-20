@@ -18,3 +18,8 @@ This repository is the starter code for the project: Students will fork and clon
 - Body-Parser
 - Chance
 - MD5
+
+## Screenshots
+
+![Screenshot of iPad view](https://github.com/emtupp/tweeter/blob/master/docs/iPad.png?raw=true)
+![Screenshot of iPad tweet hover and word counter](https://github.com/emtupp/tweeter/blob/master/docs/iPad-tweet-hover.png?raw=true)
