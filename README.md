@@ -23,3 +23,4 @@ This repository is the starter code for the project: Students will fork and clon
 
 ![Screenshot of iPad view](https://github.com/emtupp/tweeter/blob/master/docs/iPad.png?raw=true)
 ![Screenshot of iPad tweet hover and word counter](https://github.com/emtupp/tweeter/blob/master/docs/iPad-tweet-hover.png?raw=true)
+![Screenshot of error message in browser view](https://github.com/emtupp/tweeter/blob/master/docs/browser-error.png?raw=true)
